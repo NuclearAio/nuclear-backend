@@ -1,4 +1,3 @@
-from os import stat
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
@@ -62,7 +61,7 @@ def create_bot_profile(request):
 def update_bot_profile(request, bot_profile_id):
     try:
         bot_profile_object = BotProfile.objects.get(id=bot_profile_id)
-        if(bot_profile_id):
+        if(bot_profile_object):
             user = request.user
             if(bot_profile_object.user==user):
                 serializer = BotProfileSerializer(instance=bot_profile_object, data=request.data, partial=True)
@@ -79,7 +78,7 @@ def update_bot_profile(request, bot_profile_id):
 def delete_bot_profile(request, bot_profile_id):
     try:
         bot_profile_object = BotProfile.objects.get(id=bot_profile_id)
-        if(bot_profile_id):
+        if(bot_profile_object):
             user = request.user
             if(bot_profile_object.user==user):
                 bot_profile_object.delete()
