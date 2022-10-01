@@ -11,6 +11,7 @@ from rest_framework.status import (
 from .models import Card
 from .serializers import CardSerializer
 
+# Refactor like proxy -> total_amount_spent -> view
 
 @api_view(['GET'])
 def get_cards(request):
@@ -64,7 +65,7 @@ def update_card(request, card_id):
     except Exception as error:
         return Response({"error": f"{error}"},status=HTTP_400_BAD_REQUEST)
 
-
+# Refactor like proxy-> totla_amount_spent -> view
 @api_view(['DELETE'])
 def delete_card(request, card_id):
     try:
@@ -74,5 +75,7 @@ def delete_card(request, card_id):
             if(card_object.user==user):
                 card_object.delete()
                 return Response(status=HTTP_204_NO_CONTENT)
+            return Response(status=HTTP_401_UNAUTHORIZED)
+        return Response(status=HTTP_401_UNAUTHORIZED)
     except Exception as error:
         return Response({"error": f"{error}"}, status=HTTP_400_BAD_REQUEST)

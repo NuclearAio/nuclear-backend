@@ -1,0 +1,60 @@
+
+def user_proxy_performace(request):
+    "done"
+    pass
+
+def global_proxy_performace(request):
+    "done"
+    pass
+
+def total_spent_on_proxies(request):
+    "done"
+    pass
+
+def spent_on_proxies_per_month(request):
+    "done"
+    pass
+
+def spent_on_proxies_per_week(request):
+    "done"
+    pass
+
+def total_spent_on_shoes_by_bot(request):
+    "done"
+    pass
+
+def user_bot_performace(request):
+    "done"
+    pass
+
+def global_bot_performace(request):
+    "done"
+    pass
+
+def total_spent_on_bot_per_month(request):
+    "done"
+    pass
+
+def total_revenue_by_selling_shoes(request):
+    "done"
+    pass
+
+def total_revenue_this_week_by_selling_shoes(request):
+    "done"
+    pass
+
+def total_revenue_this_month_by_selling_shoes(request):
+    "done"
+    pass
+
+def total_unsold_shoes(request):
+    "done"
+    pass
+
+def auth(request):
+    "add auth  but in old repo "
+    pass
+
+def merge_to_old_repo(request):
+    "add this repo to old repo and refactor the code and add auth and test the api "
+    pass

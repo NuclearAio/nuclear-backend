@@ -21,6 +21,10 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'bot_profile.apps.BotProfileConfig',
     'card.apps.CardConfig', 
+    'proxy.apps.ProxyConfig',
+    'bot.apps.BotConfig',
+    'report.apps.ReportConfig',
+    'inventory.apps.InventoryConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
