@@ -10,21 +10,26 @@ class BotVendor(models.Model):
     number_of_time_bot_ran = models.PositiveIntegerField(null=True, blank=True)
     total_success = models.PositiveIntegerField(null=True, blank=True)
     number_of_decline = models.PositiveIntegerField(null=True, blank=True)
+    success_rate = models.PositiveSmallIntegerField(null=True, blank=True)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True) 
 
     def save(self, *args, **kwargs):
         if(self.number_of_time_bot_ran==None):  # Danger Zone!!!!!!!!!!!!!
             if(not self.number_of_time_bot_ran): 
-                self.number_of_time_bot_ran= 0
+                self.number_of_time_bot_ran = 0
                 self.total_success = 0
                 self.number_of_decline =0
+        elif(self.number_of_time_bot_ran==0):
+            self.success_rate = 0
+        else:
+            self.success_rate = (self.total_success/self.number_of_time_bot_ran) * 100
         super(BotVendor, self).save(*args, **kwargs)
 
     def __str__(self):
-        return f"People ran {self.name} {self.number_of_time_bot_ran} times!"
+        return f"{self.name} have success rate of {self.success_rate} persent"
 
     class Meta:
-        ordering = ['-total_success']
+        ordering = ['-success_rate']
 
 
 class UserBotPerformance(models.Model):
