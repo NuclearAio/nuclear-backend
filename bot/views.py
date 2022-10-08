@@ -21,6 +21,7 @@ from .serializers import (
     BotSubscription
 )
 
+# All bots Vendor
 @api_view(['GET'])
 def get_bot_vendors(request):
     try:
@@ -29,6 +30,19 @@ def get_bot_vendors(request):
         return Response(serializer.data, status=HTTP_200_OK)
     except Exception as error:
         return Response({"error": f"{error}"}, status=HTTP_400_BAD_REQUEST)
+
+# All bot vendor with pagination
+@api_view(['GET'])
+def get_bots_success_rate(request):
+    try:
+        paginator = PageNumberPagination()
+        paginator.page_size = 6
+        bot_vendor_objects = BotVendor.objects.all()
+        paginated_objects =  paginator.paginate_queryset(bot_vendor_objects, request)
+        serializer = BotVendorSerializer(paginated_objects, many=True)
+        return paginator.get_paginated_response(serializer.data)
+    except Exception as error:
+        return Response(status=HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
 def create_bot_subscription(request):
@@ -81,5 +95,5 @@ def delete_bot_subscription(request, bot_subscription_id):
         return Response({"error": f"{error}"}, status=HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
-def get_bot_performance(reequest):
+def get_user_bot_performance(reequest):
     pass
