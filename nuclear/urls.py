@@ -10,4 +10,5 @@ urlpatterns = [
     path('bot/', include('bot.urls')),
     path('report/', include('report.urls')),
     path('inventory/', include('inventory.urls')),
+    path('account/', include('account.urls')),
 ]
