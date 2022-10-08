@@ -6,9 +6,8 @@ from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.status import (
     HTTP_200_OK, HTTP_201_CREATED, 
-    HTTP_400_BAD_REQUEST, HTTP_401_UNAUTHORIZED,
-    HTTP_204_NO_CONTENT, HTTP_404_NOT_FOUND,
-    HTTP_206_PARTIAL_CONTENT, HTTP_500_INTERNAL_SERVER_ERROR,
+    HTTP_400_BAD_REQUEST, HTTP_204_NO_CONTENT,
+     HTTP_500_INTERNAL_SERVER_ERROR,
 )
 from bot_profile.models import BotProfile
 from card.models import Card
@@ -151,6 +150,11 @@ def create_report(request):
     except Exception as error:
         return Response({"error": f"{error}"}, status=HTTP_400_BAD_REQUEST)
 
+"""
+some changes: api should look like this -> total succes, weekly success, monthly success
+                                            total decline, weekly decline, monthly decline,
+                                            get success tasks, get decline tasks
+"""
 # add pagination
 @api_view(['GET'])
 def get_reports(request):
@@ -181,6 +185,7 @@ def get_reports(request):
     except Exception as error:
         return Response({"error": f"{error}"}, status=HTTP_400_BAD_REQUEST)
 
+# Total Decline and succes this week and this month
 @api_view(['GET'])
 def get_amount_spent_by_bot_on_shoes(request):
     try:

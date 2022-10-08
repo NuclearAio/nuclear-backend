@@ -11,7 +11,6 @@ from rest_framework.status import (
     HTTP_206_PARTIAL_CONTENT, HTTP_500_INTERNAL_SERVER_ERROR,
 )
 
-from analytics.views import user_proxy_performace
 
 from .models import (
     Proxy, ProxyType, ProxyVendor,
