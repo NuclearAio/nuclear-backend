@@ -67,6 +67,7 @@ def create_inventory_item(request):
             inventory_object = Inventory(
                 user=user,
                 product_name=product_name,
+                product_size=product_size,
                 buying_price=buying_price,
                 is_sold=False
             )
